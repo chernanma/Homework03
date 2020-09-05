@@ -9,106 +9,120 @@ var upperCasedCharacters = ['A','B','C','D','E','F','G','H','I','J','K','L','M',
 
 var generateBtn = document.querySelector("#generate");
 
+// var passlenght = false;
+// var chartstring = false;
 
 // Write password to the #password input
 function writePassword() {
+  
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password; 
   passwordText.setAttribute("style","font-size:30px;");
-
   
 }    
 
 function generatePassword() {
-  var result =""; 
-  var passlenght = prompt("Please enter password length of at least 8 characters and no more than 128 characters");
-  var intpasslenght = parseInt(passlenght);
-  var chartype;
-  
-  console.log(intpasslenght);  
-  if (passlenght === null){
-    result = "Generation has been canceled";
-    return result;
-  } else {
-    if (intpasslenght < 8 || intpasslenght > 120 || isNaN(intpasslenght)) {
-      alert("Input must be a number between 8 and 120");             
-      writePassword();
-    }
+  var chartype;  
+  var result = "";
+  var passlenght = false;
+  var chartstring = false;
+  // Verify input for password lenght, base on criteria
+  while(passlenght === false){
+    passlenght =passlenghtval();
+    console.log(passlenght);
   }
-  
-  var chartstring = prompt("Please enter character type, L (lowercase), U (uppercase), N (numeric) or S (special characters)");
-  if (chartstring === null){
-    return;
-  } else {
-    while (chartstring.length < 1) {
-      if (chartstring === null){
-        return;
-      } else{
-        chartstring = prompt("Please enter character type, L (lowercase), U (uppercase), N (numeric) or S (special characters)");
-      }
-    }
-  }
-
-
   console.log(passlenght);
-  console.log(chartstring);   
- 
-  if (isNaN(intpasslenght)){ 
-    result = "Generation has been canceled";   
-  }
-  else{
-
-  if (chartstring === "L"){
-      var str = lowerCasedCharacters;
-      for (i = 0; i <= intpasslenght; i++) { 
-          var char = Math.floor(Math.random() 
-                      * str.length); 
-            
-          result += str[char]; 
-      } 
-    }else if (chartstring === "U"){
-          var str = upperCasedCharacters;
-          for (i = 0; i <= intpasslenght; i++) { 
-            var char = Math.floor(Math.random() 
-                        * str.length); 
-              
-            result += str[char]; 
-
-      }
-    }else if (chartstring === "N") {
-          var str = numericCharacters;
-          for (i = 0; i <= intpasslenght; i++) { 
-            var char = Math.floor(Math.random() 
-                        * str.length); 
-              
-            result += str[char];
-        
-      } 
-    }else if(chartstring === "S"){
-          var str = specialCharacters;
-          for (i = 0; i <= intpasslenght; i++) { 
-            var char = Math.floor(Math.random() 
-                        * str.length); 
-              
-            result += str[char];
-          }    
-      
-    }else{
-      var str = specialCharacters + lowerCasedCharacters + upperCasedCharacters + numericCharacters;
-          for (i = 0; i <= intpasslenght; i++) { 
-            var char = Math.floor(Math.random() 
-                        * str.length); 
-              
-            result += str[char];
-          }    
+  
+  if (passlenght != "Password Generation canceled"){ 
+    // Verify input for password type, base on criteria 
+    while(chartstring === false){
+      chartstring = passtypeval(); 
+      console.log(chartstring);   
     }
-    
+    console.log(chartstring);
+    if (chartstring != null && chartstring != "Password Generation canceled"){
+      var str = chartstring;
+      console.log(str);
+      for (var i = 1; i <= passlenght; i++) { 
+        var char = Math.floor(Math.random() 
+                    * str.length + 1); 
+          
+        result += str[char];
+        console.log(char);
+      }      
+    }         
   }
   return result;
-  
 }
 
+// function to validate password lenght, numbers between 8 - 128
+function passlenghtval (){
+  var inputlenght = prompt("Please enter password length of at least 8 characters and no more than 128 characters");
+  var intpasslenght = parseInt(inputlenght);
+  
+  console.log(intpasslenght);  
+  if (inputlenght === null){
+    // result = "Password Generation has been canceled";
+    return "Password Generation canceled";
+  } else if (intpasslenght < 8 || intpasslenght > 128 || isNaN(intpasslenght)) {
+      alert("Input must be a number between 8 and 128");             
+      return false; 
+    }
+    else{
+      console.log(intpasslenght);
+      return intpasslenght;
+  }
+}
+
+
+// function to validate password type, only L/n (lowercase), U/u (uppercase), N/n (numeric) or S/n (special characters)
+function passtypeval (){
+  
+  var inputchartst = prompt("Please enter character type, L/n (lowercase), U/u (uppercase), N/n (numeric) or S/s (special characters)");
+  //Validate to have only l/L , u/U, n/N,s/s or "," characters in input
+  var pattern= /^[lLuUnNsS,]+$/;
+
+  //Canceling process when Cancel button in Type character prompt is hit
+  if (inputchartst != null){
+    var str = inputchartst.toLocaleLowerCase();
+    var allowcharacters = pattern.test(str);
+  }  
+
+  console.log(allowcharacters);
+  console.log(str);
+  if (inputchartst === null){
+    result = "Password Generation canceled";
+    return result;
+  }
+  if (allowcharacters) {  
+    var newstr = str.replace(/,/g,"");
+    console.log(newstr);
+    var strarray = newstr.split("");
+    console.log(strarray);
+    var finalarray = [];  
+    let uniqueInputChars = [...new Set(strarray)];    
+    console.log(uniqueInputChars);
+    for (var i=0;i < uniqueInputChars.length;i++){
+      if (uniqueInputChars[i] === "l"){
+        finalarray = finalarray + lowerCasedCharacters;
+      }
+      if (uniqueInputChars[i] === "u"){
+        finalarray = finalarray + upperCasedCharacters;
+      }
+      if (uniqueInputChars[i] === "n"){
+        finalarray = finalarray + numericCharacters;
+      }
+      if (uniqueInputChars[i] === "s"){
+        finalarray = finalarray + specialCharacters;
+      }
+    }
+    console.log(finalarray);
+    return finalarray;  
+  }else{
+    return false;
+  }  
+  }
 
 
 // Add event listener to generate button
