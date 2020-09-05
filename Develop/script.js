@@ -30,26 +30,29 @@ function generatePassword() {
   // Verify input for password lenght, base on criteria
   while(passlenght === false){
     passlenght =passlenghtval();
-    console.log(passlenght);
+    console.log(passlenght); // log for debugging
   }
-  console.log(passlenght);
+  console.log(passlenght); // log for debugging
   
   if (passlenght != "Password Generation canceled"){ 
     // Verify input for password type, base on criteria 
     while(chartstring === false){
-      chartstring = passtypeval(); 
-      console.log(chartstring);   
+      chartstring = passtypeval();       
     }
-    console.log(chartstring);
+    console.log(chartstring); // log for debugging
+
     if (chartstring != null && chartstring != "Password Generation canceled"){
+      
       var str = chartstring;
-      console.log(str);
+      console.log(str); // log for debugging
+
+      //Generating password
       for (var i = 1; i <= passlenght; i++) { 
         var char = Math.floor(Math.random() 
                     * str.length + 1); 
           
         result += str[char];
-        console.log(char);
+        console.log(char); // log for debugging
       }      
     }         
   }
@@ -61,7 +64,8 @@ function passlenghtval (){
   var inputlenght = prompt("Please enter password length of at least 8 characters and no more than 128 characters");
   var intpasslenght = parseInt(inputlenght);
   
-  console.log(intpasslenght);  
+  console.log(intpasslenght); // log for debugging
+
   if (inputlenght === null){
     // result = "Password Generation has been canceled";
     return "Password Generation canceled";
@@ -70,7 +74,7 @@ function passlenghtval (){
       return false; 
     }
     else{
-      console.log(intpasslenght);
+      console.log(intpasslenght); // log for debugging
       return intpasslenght;
   }
 }
@@ -79,30 +83,33 @@ function passlenghtval (){
 // function to validate password type, only L/n (lowercase), U/u (uppercase), N/n (numeric) or S/n (special characters)
 function passtypeval (){
   
-  var inputchartst = prompt("Please enter character type, L/n (lowercase), U/u (uppercase), N/n (numeric) or S/s (special characters)");
+  var inputchartst = prompt("Please enter character type, L/l (lowercase), U/u (uppercase), N/n (numeric) or S/s (special characters)");
   //Validate to have only l/L , u/U, n/N,s/s or "," characters in input
   var pattern= /^[lLuUnNsS,]+$/;
 
-  //Canceling process when Cancel button in Type character prompt is hit
+  //Canceling process when Cancel button in Type character prompt is pressed
   if (inputchartst != null){
     var str = inputchartst.toLocaleLowerCase();
     var allowcharacters = pattern.test(str);
   }  
 
-  console.log(allowcharacters);
-  console.log(str);
+  console.log(allowcharacters);// log for debugging
+  console.log(str);// log for debugging
+
+
   if (inputchartst === null){
     result = "Password Generation canceled";
     return result;
   }
   if (allowcharacters) {  
-    var newstr = str.replace(/,/g,"");
-    console.log(newstr);
-    var strarray = newstr.split("");
-    console.log(strarray);
+    
+    var newstr = str.replace(/,/g,"");   
+    var strarray = newstr.split("");   
     var finalarray = [];  
-    let uniqueInputChars = [...new Set(strarray)];    
-    console.log(uniqueInputChars);
+    let uniqueInputChars = [...new Set(strarray)]; 
+
+    console.log(uniqueInputChars);// log for debugging
+    
     for (var i=0;i < uniqueInputChars.length;i++){
       if (uniqueInputChars[i] === "l"){
         finalarray = finalarray + lowerCasedCharacters;
