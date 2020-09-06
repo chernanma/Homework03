@@ -1,43 +1,51 @@
 # Homework03 - Password Generator
 
-The principal scope of this project is the creation of a responsive portfolio ensuring it renders well on different devices and window sizes. In this project, I have implemented bootstrap's grid system, components, and the use of Html validation to ensure the page has valid HTML code. 
-[Click here to Access Portfolio](https://chernanma.github.io/Homework03/Develop/)
+In this project, we are randomly generating a password base on criteria entered by the user.
+  
+[Click here to Access Password Generator](https://chernanma.github.io/Homework03/Develop/)
 
-![picture](images/index.jpg)
+![picture](Assets/mainpage.jpg)
 
 ---
 
-## Bootstrap's Grid System 
+## Criteria used to Generate Security Password 
 
-Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with flexbox and is fully responsive.
+* Number entered for the Lenght of the password must be between 8 and 128.
+* Character type to include in the password could be the following:
+    * L/l to include Lowercase characters
+    * U/u to include Uppercase characters
+    * N/n to include Number characters
+    * S/s to include Special characters
+---
+## How to use Password Generator
 
-List of most common classes used to develop a webpage using bootstrap'grid system are:
+1. Click on "Generate Password"
+2. Enter Length for the password, choose a length of at least 8 characters and no more than 128
+3. Click OK
+3. Enter character type, L/l for Lowercase, U/u for Uppercase, N/n for Numbers or S/s for the special characters
 
-- class="container"
-- class="row"
-- class="col-md-12"
+    3.1 Example: if you want a password that contains Numbers, Lowercase, and Special characters. Input would be:
 
-Some of the rules that need to be noted when creating a website using bootstrap Grid System are:
+        * n,l,s OR N,L,S OR nls or NLS
+4. Click OK
 
-- Rows must be placed within a .container (fixed-width) or .container-fluid (full-width) for proper alignment and padding
-- Use rows to create horizontal groups of columns
-- Content should be placed within columns, and only columns may be immediate children of rows
-- Predefined classes like .row and .col-sm-4 are available for quickly making grid layouts
-- Columns create gutters (gaps between column content) via padding. That padding is - offset in rows for the first and last column via negative margin on .rows
-- Grid columns are created by specifying the number of 12 available columns you wish to span. For example, three equal columns would use three .col-sm-4
-- Column widths are in percentage, so they are always fluid and sized relative to their parent element
-
-Reference: [Bootstrap Grid System](https://www.w3schools.com/bootstrap/bootstrap_grid_system.asp#:~:text=Bootstrap's%20grid%20system%20allows%20up,span%201)
+After clicking OK in the last prompt the new password will be generated and showed in the center of the webpage.
 
 ---
 ## Some Screenshots
 
-### Home/About in Small Screen
+### Main page
+---
+![picture](Assets/mainpage.jpg)
 
-![picture](images/indexsmalldevices.jpg)
+### Prompt for Password Length
+---
+![picture](Assets/prompt1.jpg)
 
-### Contact in Small Screen
-![picture](images/contact.jpg)
+### Prompt for Character Type
+---
+![picture](Assets/prompt2.jpg)
 
-### Portfolio in Large Screen
-![picture](images/portfolio.jpg)
+### Main page showing Password Generated
+---
+![picture](Assets/mainresult.jpg)
