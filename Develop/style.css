@@ -14,9 +14,20 @@ body,
 
 body {
   font-family: sans-serif;
+  background-image: url("../Assets/matrix.jpg");
   background-color: #f9fbfd;
 }
 
+h1 {
+  color: white;
+  padding: 30px 40px;
+  text-shadow: 4px 4px #ff0015;
+}
+
+h2 {
+  color: white;
+  text-shadow: 4px 4px #ff0015;
+}
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
@@ -31,7 +42,7 @@ header {
 }
 
 .card {
-  background-color: hsl(0, 0%, 100%);
+  background-color:  hsla(0, 100%, 1%, 0.952);
   border-radius: 5px;
   border-width: 1px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
@@ -48,6 +59,7 @@ header {
   width: 100%;
   background: #e7e9eb;
   height: 2px;
+  
 }
 
 .card-body {
@@ -74,7 +86,7 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color:#ff0015;
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
@@ -108,7 +120,7 @@ button[disabled] {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 85px;
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -116,6 +128,7 @@ button[disabled] {
   border-radius: 6px;
   resize: none;
   overflow: hidden;
+  
 }
 
 @media (max-width: 690px) {

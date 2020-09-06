@@ -17,8 +17,7 @@ function writePassword() {
   
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-  passwordText.value = password; 
-  passwordText.setAttribute("style","font-size:30px;");
+  passwordText.value = password;   
   
 }    
 
@@ -83,11 +82,11 @@ function passlenghtval (){
 // function to validate password type, only L/n (lowercase), U/u (uppercase), N/n (numeric) or S/n (special characters)
 function passtypeval (){
   
-  var inputchartst = prompt("Please enter character type, L/l (lowercase), U/u (uppercase), N/n (numeric) or S/s (special characters)");
+  var inputchartst = prompt("Please enter character type, L/l (lowercase), U/u (uppercase), N/n (numeric) or S/s (special characters)" + "\n Example: l,u,s 'Password will contain Lowercase - Uppercase - Special Characters' ");
   //Validate to have only l/L , u/U, n/N,s/s or "," characters in input
   var pattern= /^[lLuUnNsS,]+$/;
 
-  //Canceling process when Cancel button in Type character prompt is pressed
+  //Canceling process if Cancel button in Type character prompt is pressed
   if (inputchartst != null){
     var str = inputchartst.toLocaleLowerCase();
     var allowcharacters = pattern.test(str);
@@ -96,35 +95,37 @@ function passtypeval (){
   console.log(allowcharacters);// log for debugging
   console.log(str);// log for debugging
 
-
+  //Canceling process if Cancel button in Type character prompt is pressed
   if (inputchartst === null){
     result = "Password Generation canceled";
     return result;
   }
   if (allowcharacters) {  
     
-    var newstr = str.replace(/,/g,"");   
-    var strarray = newstr.split("");   
+    var newstr = str.replace(/,/g,""); //Removing "," from data entered in prompt 
+    var strarray = newstr.split(""); // Convert string into an array   
     var finalarray = [];  
-    let uniqueInputChars = [...new Set(strarray)]; 
+    let uniqueInputChars = [...new Set(strarray)]; //Removing duplicates from array
 
     console.log(uniqueInputChars);// log for debugging
-    
+
+    //Creating chars Pool for the password generating process base on criteria
     for (var i=0;i < uniqueInputChars.length;i++){
+      console.log(uniqueInputChars);
       if (uniqueInputChars[i] === "l"){
-        finalarray = finalarray + lowerCasedCharacters;
+        finalarray = finalarray.concat(lowerCasedCharacters);
       }
       if (uniqueInputChars[i] === "u"){
-        finalarray = finalarray + upperCasedCharacters;
+        finalarray = finalarray.concat(upperCasedCharacters);
       }
       if (uniqueInputChars[i] === "n"){
-        finalarray = finalarray + numericCharacters;
+        finalarray = finalarray.concat(numericCharacters);
       }
       if (uniqueInputChars[i] === "s"){
-        finalarray = finalarray + specialCharacters;
+        finalarray = finalarray.concat(specialCharacters);
       }
     }
-    console.log(finalarray);
+    console.log(finalarray);// log for debugging
     return finalarray;  
   }else{
     return false;
