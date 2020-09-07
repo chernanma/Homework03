@@ -49,3 +49,6 @@ After clicking OK in the last prompt the new password will be generated and show
 ### Main page showing Password Generated
 ---
 ![picture](Assets/mainresult.jpg)
+
+---
+© 2020 Cesar Martinez. All Rights Reserved.
