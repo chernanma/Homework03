@@ -1,4 +1,4 @@
-# Homework03 - Password Generator
+# Password Generator
 
 In this project, we are randomly generating a password base on criteria entered by the user.
   
