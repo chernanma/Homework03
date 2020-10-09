@@ -2,7 +2,7 @@
 
 In this project, we are randomly generating a password base on criteria entered by the user.
   
-[Click here to Access Password Generator](https://chernanma.github.io/Homework03/Develop/)
+[Click here to Access Password Generator](https://chernanma.github.io/Password-Generator/Develop/)
 
 ![picture](Assets/mainpage.jpg)
 
